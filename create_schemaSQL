@@ -1,0 +1,16 @@
+create schema jdbc_db;
+
+CREATE TABLE category (
+    id INT PRIMARY KEY auto_increment,
+    name VARCHAR(45)
+);
+
+CREATE TABLE question (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    text VARCHAR(150) NOT NULL,
+    question_type VARCHAR(45) NOT NULL CHECK(question_type = "OPEN" or question_type = "CHOICE"),
+    question_difficulty VARCHAR(45) NOT NULL CHECK(question_difficulty = "LOW" or question_difficulty = "MEDIUM" or question_difficulty = "HIGH")
+);
+
+alter table question add column category int;
+alter table question add foreign key (category) references category(id);
