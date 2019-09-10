@@ -14,3 +14,18 @@ CREATE TABLE question (
 
 alter table question add column category int;
 alter table question add foreign key (category) references category(id);
+
+CREATE TABLE candidate (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    email VARCHAR(45) NOT NULL,
+    name VARCHAR(45) NOT NULL,
+    surname VARCHAR(45) NOT NULL
+);
+
+CREATE TABLE topic (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    number_of_questions INT,
+    topic_difficulty VARCHAR(45) NOT NULL CHECK (topic_difficulty = 'LOW'
+        OR topic_difficulty = 'MEDIUM'
+        OR topic_difficulty = 'HIGH')
+);

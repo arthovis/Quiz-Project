@@ -11,6 +11,8 @@
 
         <class>quiz.dao.entity.Category</class>
         <class>quiz.dao.entity.Question</class>
+        <class>quiz.dao.entity.Candidate</class>
+        <class>quiz.dao.entity.Topic</class>
 
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
 

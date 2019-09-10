@@ -9,7 +9,7 @@ import quiz.dao.entity.Category;
 
 import javax.persistence.EntityManager;
 
-public class TestCategoryDao {
+public class TestCategoryDAO {
 
     @Before
     public void delete() {
@@ -21,7 +21,7 @@ public class TestCategoryDao {
     }
 
     @Test
-    public void testCreate() {
+    public void testCRUD() {
         CategoryDAO categoryDAO = new CategoryDAO();
 
         Category category = new Category();
@@ -31,20 +31,20 @@ public class TestCategoryDao {
         categoryDAO.create(category);
 
         // verify
-        Category read = categoryDAO.read(1);
+        Category read = categoryDAO.read(category.getId());
         Assert.assertNotNull(read);
 
-        Category updatedCategory = categoryDAO.read(1);
+        Category updatedCategory = categoryDAO.read(category.getId());
         updatedCategory.setName("bbb");
         categoryDAO.update(updatedCategory);
-        Category categoryToCheck = categoryDAO.read(1);
+        Category categoryToCheck = categoryDAO.read(category.getId());
         Assert.assertEquals("bbb", categoryToCheck.getName());
 
 
-        Category categoryToRemove = categoryDAO.read(1);
+        Category categoryToRemove = categoryDAO.read(category.getId());
         categoryDAO.delete(categoryToRemove);
 
-        Category categoryToCheck1 = categoryDAO.read(1);
+        Category categoryToCheck1 = categoryDAO.read(category.getId());
         Assert.assertNull(categoryToCheck1);
 
     }
