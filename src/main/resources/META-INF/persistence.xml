@@ -13,6 +13,7 @@
         <class>quiz.dao.entity.Question</class>
         <class>quiz.dao.entity.Candidate</class>
         <class>quiz.dao.entity.Topic</class>
+        <class>quiz.dao.entity.Answer</class>
 
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
 
