@@ -31,7 +31,7 @@ public class AnswerDAO {
             throw new EntityNotFoundException("Entity not found");
         }
         existing.setText(answer.getText());
-        existing.setValue(answer.getValue());
+        existing.setValue(answer.isValue());
 
         entityManager.getTransaction().commit();
         entityManager.close();

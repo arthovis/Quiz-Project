@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class Topic extends TemplateEntity {
 
     @Column(name = "number_of_questions")
-    int numberOfQuestions;
+    private int numberOfQuestions;
 
     @Column(name = "topic_difficulty")
     @Enumerated(EnumType.STRING)

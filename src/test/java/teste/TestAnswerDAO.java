@@ -25,7 +25,7 @@ public class TestAnswerDAO {
         AnswerDAO answerDAO = new AnswerDAO();
 
         answer.setText("Random answer");
-        answer.setValue(15);
+        answer.setValue(true);
 
         answerDAO.create(answer);
 

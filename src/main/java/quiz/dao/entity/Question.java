@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table(name = "question")
 public class Question extends TemplateEntity {
 
-    String text;
+    private String text;
 
     @Column(name = "question_type")
     @Enumerated(EnumType.STRING)

@@ -7,7 +7,8 @@ import javax.persistence.Table;
 public class Answer extends TemplateEntity {
 
     private String text;
-    private int value;
+
+    private boolean value;
 
     public String getText() {
         return text;
@@ -17,11 +18,13 @@ public class Answer extends TemplateEntity {
         this.text = text;
     }
 
-    public int getValue() {
+    public boolean isValue() {
         return value;
     }
 
-    public void setValue(int value) {
+    public void setValue(boolean value) {
         this.value = value;
     }
+
+
 }

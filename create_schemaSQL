@@ -33,5 +33,5 @@ CREATE TABLE topic (
 CREATE TABLE answer (
     id INT PRIMARY KEY AUTO_INCREMENT,
     text VARCHAR(150) NOT NULL,
-    value INT NOT NULL
+    value BOOLEAN NOT NULL
 );
