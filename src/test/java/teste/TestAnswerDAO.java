@@ -4,8 +4,14 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import quiz.dao.daos.AnswerDAO;
+import quiz.dao.daos.CategoryDAO;
 import quiz.dao.daos.EMF;
+import quiz.dao.daos.QuestionDAO;
 import quiz.dao.entity.Answer;
+import quiz.dao.entity.Category;
+import quiz.dao.entity.Question;
+import quiz.dao.enums.QuestionDifficulty;
+import quiz.dao.enums.QuestionType;
 
 import javax.persistence.EntityManager;
 
@@ -24,8 +30,23 @@ public class TestAnswerDAO {
         Answer answer = new Answer();
         AnswerDAO answerDAO = new AnswerDAO();
 
+        Category category = new Category();
+        CategoryDAO categoryDAO = new CategoryDAO();
+        category.setName("aaa");
+        categoryDAO.create(category);
+
+        Question question = new Question();
+        QuestionDAO questionDAO = new QuestionDAO();
+        question.setText("fhsjfhjksd");
+        question.setQuestionType(QuestionType.OPEN);
+        question.setQuestionDifficulty(QuestionDifficulty.HIGH);
+        question.setCategory(category);
+
+        questionDAO.create(question);
+
         answer.setText("Random answer");
         answer.setValue(true);
+        answer.setQuestion(question);
 
         answerDAO.create(answer);
 

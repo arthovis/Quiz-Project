@@ -4,6 +4,8 @@ import quiz.dao.enums.QuestionDifficulty;
 import quiz.dao.enums.QuestionType;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @javax.persistence.Entity
 @Table(name = "question")
@@ -22,6 +24,25 @@ public class Question extends TemplateEntity {
     @ManyToOne(optional = false)
     @JoinColumn(name = "category", referencedColumnName = "id")
     Category category;
+
+    @OneToMany(mappedBy = "question")
+    private final List<Answer> answers = new ArrayList<>();
+
+
+    @ManyToMany
+    @JoinTable(name = "question_test",
+            joinColumns = {@JoinColumn(name = "question_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "test_id", referencedColumnName = "id")})
+    private final List<Tests> tests = new ArrayList<>();
+
+    public List<Tests> getTests() {
+        return tests;
+    }
+
+    public List<Answer> getAnswers() {
+        return answers;
+    }
+
 
     public Category getCategory() {
         return category;

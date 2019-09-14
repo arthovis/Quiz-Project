@@ -35,3 +35,20 @@ CREATE TABLE answer (
     text VARCHAR(150) NOT NULL,
     value BOOLEAN NOT NULL
 );
+
+alter table answer add column question int;
+alter table answer add foreign key (question) references question(id);
+
+CREATE TABLE test (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    creation_date TIMESTAMP NOT NULL
+);
+
+CREATE TABLE question_test (
+    question_id INT,
+    test_id INT
+);
+
+alter table question_test add foreign key (question_id) references question(id);
+alter table question_test add foreign key (test_id) references test(id);
+alter table question_test add primary key (question_id,test_id);

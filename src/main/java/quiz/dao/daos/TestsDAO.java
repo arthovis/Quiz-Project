@@ -1,48 +1,47 @@
 package quiz.dao.daos;
 
 import quiz.dao.entity.Question;
+import quiz.dao.entity.Tests;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
-public class QuestionDAO {
+public class TestsDAO {
 
-    public void create(Question question){
+    public void create(Tests test) {
         EntityManager entityManager = EMF.createEM();
         entityManager.getTransaction().begin();
-        entityManager.persist(question);
+        entityManager.persist(test);
         entityManager.getTransaction().commit();
         entityManager.close();
     }
 
-    public Question read(int id){
+    public Tests read(int id) {
         EntityManager entityManager = EMF.createEM();
-        Question question = entityManager.find(Question.class,id);
+        Tests test = entityManager.find(Tests.class, id);
         entityManager.close();
-        return question;
+        return test;
     }
 
-    public void update(Question question){
+    public void update(Tests test) {
         EntityManager entityManager = EMF.createEM();
         entityManager.getTransaction().begin();
-        Question existing = entityManager.find(Question.class, question.getId());
+        Tests existing = entityManager.find(Tests.class, test.getId());
 
         if (existing == null) {
             throw new EntityNotFoundException("Entity not found");
         }
-        existing.setText(question.getText());
-        existing.setQuestionType(question.getQuestionType());
-        existing.setQuestionDifficulty(question.getQuestionDifficulty());
+        existing.setCreationDate(test.getCreationDate());
 
         entityManager.getTransaction().commit();
         entityManager.close();
     }
 
-    public void delete(Question question) {
+    public void delete(Tests test) {
         EntityManager entityManager = EMF.createEM();
         entityManager.getTransaction().begin();
-        Question existing = entityManager.find(Question.class, question.getId());
+        Tests existing = entityManager.find(Tests.class, test.getId());
         if (existing != null) {
             entityManager.remove(existing);
         }
@@ -50,8 +49,7 @@ public class QuestionDAO {
         entityManager.close();
     }
 
-    public List<Question> findAll() {
-        // tODO
-        return null;
+    public void link(List<Question> randomChosenQuestions, Tests tests) {
+        // todo
     }
 }
